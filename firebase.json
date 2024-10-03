@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "mizzou-tutorial-blog-app-2024-3",
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
