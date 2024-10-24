@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "mizzou-tutorial-blog-app-2024-3",
+    "site": "devops-blog-mizzou-2024",
     "public": "build",
     "ignore": [
       "firebase.json",

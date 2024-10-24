@@ -1,0 +1,80 @@
+/* Apply box-sizing globally to all elements */
+* {
+    box-sizing: border-box;
+}
+
+/* Main Container */
+.createPostPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Light background for contrast */
+}
+
+/* Create Post Container */
+.createPostContainer {
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    background-color: #4b0082; /* Darker purple background */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    text-align: center;
+}
+
+/* Title */
+.createPostContainer h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Input Group */
+.inputGroup {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Labels */
+.inputGroup label {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+/* Text Input and Textarea */
+.inputGroup input,
+.inputGroup textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    resize: none;
+    box-sizing: border-box;
+}
+
+/* Textarea Specific */
+.inputGroup textarea {
+    height: 150px;
+}
+
+/* Submit Button */
+.createPostContainer button {
+    padding: 12px 20px;
+    font-size: 1.2em;
+    background-color: #3a006d; /* Darker button shade */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.createPostContainer button:hover {
+    background-color: #5e0dc8; /* Slightly lighter purple for hover effect */
+}
