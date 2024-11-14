@@ -33,9 +33,9 @@ function Home({ isAuth }) {
                 <h1> {post.title} </h1>
               </div>
               <div className="deletePost">
-                {isAuth && post.author.id === auth.currentUser.uid && (
-                  <button onClick={() => deletePost(post.id)}>&#128465;</button>
-                )}
+              {isAuth && auth.currentUser && post.author.id === auth.currentUser.uid && (
+                <button onClick={() => deletePost(post.id)}>&#128465;</button>
+              )}
               </div>
             </div>
             <div className="postTextContainer"> {post.post} </div>

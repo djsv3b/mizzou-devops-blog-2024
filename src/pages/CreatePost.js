@@ -15,6 +15,11 @@ function CreatePost({ isAuth }) {
   let navigate = useNavigate();
 
   const createPost = async () => {
+    if (!auth.currentUser) {
+      console.error("User not authenticated");
+      return;
+    }
+  
     try {
       await addDoc(postsCollectionRef, {
         title,
@@ -23,14 +28,14 @@ function CreatePost({ isAuth }) {
           name: auth.currentUser.displayName,
           id: auth.currentUser.uid,
         },
-        timestamp: serverTimestamp() 
-
+        timestamp: serverTimestamp()
       });
       navigate("/");
     } catch (err) {
       console.error("Error creating post: ", err);
     }
   };
+  
 
   useEffect(() => {
     if (!isAuth) {
