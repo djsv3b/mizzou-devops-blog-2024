@@ -11,25 +11,24 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [18.x]  # Use Node 18 for consistency
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install -g yarn
-    - name: yarn install, build and test
+    - name: Install dependencies
+      run: npm install  # Use npm instead of yarn
+    - name: Build and Test
       run: |
-        yarn install
-        yarn build
+        npm run build  # Builds your React app
+        npm test -- --watchAll=false  # Run tests without watch mode
     - name: Archive Build
       uses: actions/upload-artifact@v2
       with:
@@ -37,7 +36,6 @@ jobs:
         path: build
         
   deploy:
-    name: Deploy
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -47,9 +45,9 @@ jobs:
         with:
           name: build
           path: build
-      - name: Depoy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools  # Ensure Firebase CLI is installed
+      - name: Deploy to Firebase
+        run: firebase deploy --only hosting  # Deploy only to Firebase Hosting
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}  # Ensure token is set as a secret
