@@ -11,15 +11,6 @@ let db = firebase.initializeTestApp({ projectId }).firestore();
 const authDb = firebase.initializeTestApp({ projectId, auth: { uid: "user123" } }).firestore();
 const adminDb = firebase.initializeAdminApp({ projectId }).firestore();
 
-
-beforeAll(async ()=>{
-    await firebase.clearFirestoreData({projectId});
-})
-
-test("True", ()=>{
-    expect(5).toBe(5);
-})
-
 test("unauthorized user cannot write to posts collection", async () => {
     const unauthorizedDb = firebase.initializeTestApp({ projectId }).firestore();
     
@@ -27,11 +18,3 @@ test("unauthorized user cannot write to posts collection", async () => {
       unauthorizedDb.collection("posts").add({ title: "Unauthorized post" })
     ).rejects.toThrow(/PERMISSION_DENIED/); // Expect specific error message
 });
-
-
-  afterAll(async () => {
-    await firebase.clearFirestoreData({ projectId });
-    await Promise.all(firebase.apps().map(app => app.delete()));
-  });
-  
-  
