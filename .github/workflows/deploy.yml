@@ -16,10 +16,18 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18.x' # Match your project's Node.js version
+        node-version: '20.x'
 
     - name: Install dependencies
       run: npm install
+
+    - name: Install Firebase CLI
+      run: npm install -g firebase-tools
+
+    - name: Start Firestore emulator
+      run: |
+        firebase emulators:start --only firestore --project final-4990 &
+        sleep 5 # Wait for emulator to spin up
 
     - name: Run tests
       run: npm run test
