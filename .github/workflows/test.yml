@@ -19,10 +19,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18' #Update node version if needed, currently 18
+          node-version: '18'  # Update Node version if needed, using 18.x here
 
       - name: Install dependencies
         run: npm install
 
       - name: Run tests
-        run: npm test -- --watchAll=false
+        run: npm test -- --watchAll=false  # Run tests without watch mode
