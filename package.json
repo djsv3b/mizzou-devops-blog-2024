@@ -5,6 +5,7 @@
   "dependencies": {
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^11.0.1",
+    "lint": "^0.8.19",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
@@ -12,6 +13,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "lint": "eslint .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -36,13 +38,13 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@firebase/rules-unit-testing": "^4.0.0",
     "@firebase/testing": "^0.20.11",
     "@jest/globals": "^29.7.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@types/jest": "^29.5.14",
-    "firebase-admin": "^12.7.0",
     "jest": "^27.5.1",
     "jest-mock": "^29.7.0",
     "util": "^0.12.5",

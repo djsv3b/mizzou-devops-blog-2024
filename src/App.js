@@ -5,11 +5,11 @@ import { useState } from "react";
 import {signOut} from "firebase/auth";
 import {auth} from "./firebase-config";
 import Home from './pages/Home';
-import CreatePost from './pages/CreatePost';
+import Post from './pages/Post';
 import Login from './pages/Login';
 //import css
 import './css/navbar.css'; 
-import './App.css';
+
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth") === "true");
@@ -28,15 +28,15 @@ function App() {
         <Link to="/">Home</Link>
         {!isAuth ? <Link to="/login">Login</Link> : (
           <>
-            <Link to="createpost">Create Post</Link>
+            <Link to="post">Create Post</Link>
             <button onClick={logOut}>Log Out</button>
           </>
         )}
       </nav>
-      <div style={{ paddingTop: '50px' }}> {/* padding to prevent overlap */} </div>
+      <div style={{ paddingTop: '50px' }}> {/*padding div*/} </div>
       <Routes>
         <Route path="/" element={<Home isAuth={isAuth}/>} />
-        <Route path="/createpost" element={<CreatePost isAuth={isAuth}/>} />
+        <Route path="/post" element={<Post isAuth={isAuth}/>} />
         <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
       </Routes>
     </Router>

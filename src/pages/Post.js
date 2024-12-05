@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { serverTimestamp } from "firebase/firestore";
 
 
-function CreatePost({ isAuth }) {
+function Post({ isAuth }) {
   const [title, setTitle] = useState("");
   const [post, setPost] = useState("");
 
@@ -48,14 +48,14 @@ function CreatePost({ isAuth }) {
       <div className="createPostContainer">
         <h1>Create A Post</h1>
         <div className="inputGroup">
-          <label> Title:</label>
+          <label className="postlabel"> Title:</label>
           <input
             placeholder="Title..."
             onChange={(event) => setTitle(event.target.value)}
           />
         </div>
         <div className="inputGroup">
-          <label> Post:</label>
+          <label className="postlabel"> Post:</label>
           <textarea
             placeholder="Post..."
             onChange={(event) => setPost(event.target.value)}
@@ -67,4 +67,4 @@ function CreatePost({ isAuth }) {
   );
 }
 
-export default CreatePost;
+export default Post;
